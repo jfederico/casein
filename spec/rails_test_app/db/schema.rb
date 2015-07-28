@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141220224414) do
 
-  create_table "casein_admin_users", force: :cascade do |t|
+  create_table "members_admin_users", force: :cascade do |t|
     t.string   "login",                           null: false
     t.string   "name"
     t.string   "email"

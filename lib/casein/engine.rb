@@ -1,12 +1,12 @@
-require "casein"
+require "members"
 require "rails"
 require 'bootstrap-sass'
 
-module Casein
+module Members
   class Engine < Rails::Engine
     
-    initializer "casein.assets.precompile" do |app|
-      app.config.assets.precompile += %w(casein/login.css casein/casein.css casein/casein.js casein/html5shiv.js casein/custom.css casein/custom.js casein/*.png)
+    initializer "members.assets.precompile" do |app|
+      app.config.assets.precompile += %w(members/login.css members/members.css members/members.js members/html5shiv.js members/custom.css members/custom.js members/*.png)
     end
 
     rake_tasks do
@@ -25,7 +25,7 @@ module Casein
   class RouteConstraint
 
      def matches?(request)
-       return false if request.fullpath.include?("/casein")
+       return false if request.fullpath.include?("/members")
        return false if request.fullpath.include?("/admin")
        true
      end

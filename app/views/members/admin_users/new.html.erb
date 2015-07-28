@@ -1,0 +1,57 @@
+<h2>Add a new user</h2>
+
+<%= form_for @members_admin_user do |form| %>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= members_text_field form, @members_admin_user, :login, {:size => 30, :members_label => "Username"} %>
+		</div>
+		<div class="col-lg-6">
+			<%= members_text_field form, @members_admin_user, :name %>
+		</div>
+	</div>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= members_text_field form, @members_admin_user, :email %>
+		</div>
+		<div class="col-lg-6">
+			<%= members_time_zone_select form, @members_admin_user, :time_zone, ActiveSupport::TimeZone.us_zones %>
+		</div>
+	</div>
+
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= members_select form, @members_admin_user, :access_level, members_get_access_level_array, {:members_label => "Role"} %>
+		</div>
+		<div class="col-lg-6">
+		</div>
+	</div>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= members_password_field form, @members_admin_user, :password, {:members_label => "Password"} %>
+		</div>
+		<div class="col-lg-6">
+			<%= members_password_field form, @members_admin_user, :password_confirmation, {:members_label => "Repeat password"} %>
+		</div>
+		<div class="col-lg-12 password-checkbox">
+			<div class="checkbox">
+	      		<label>
+	      			<%= check_box_tag :generate_random_password, "1", false, {:id => 'generate-random-password-checkbox'} %> Generate random password
+	      		</label>
+	    	</div>
+	    </div>
+	</div>
+
+	<p class="submits">
+		<%= link_to 'Cancel', members_admin_users_path, :class => 'btn btn-mini btn-danger' %>
+		<%= form.submit "Add new user", :class => "btn btn-mini btn-primary" %>
+	</p>
+
+<% end %>
+
+<%= content_for :sidebar do %>
+  <li><%= link_to "#{members_show_icon('th-list')}Back to list".html_safe, members_admin_users_path %></li>
+<% end %>

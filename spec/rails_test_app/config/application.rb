@@ -9,7 +9,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "casein"
+require "members"
 
 module RailsTestApp
   class Application < Rails::Application

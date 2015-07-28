@@ -1,38 +1,38 @@
-module Casein
+module Members
   
-  class CaseinNotification < ActionMailer::Base
+  class MembersNotification < ActionMailer::Base
 	
-  	self.prepend_view_path File.join(File.dirname(__FILE__), '..', 'views', 'casein')
+  	self.prepend_view_path File.join(File.dirname(__FILE__), '..', 'views', 'members')
 	
-  	def generate_new_password from, casein_admin_user, host, pass
-  		@name = casein_admin_user.name
+  	def generate_new_password from, members_admin_user, host, pass
+  		@name = members_admin_user.name
   		@host = host
-  		@login = casein_admin_user.login
+  		@login = members_admin_user.login
   		@pass = pass
-  		@from_text = casein_config_website_name
+  		@from_text = members_config_website_name
   		
-  		mail(:to => casein_admin_user.email, :from => from, :subject => "[#{casein_config_website_name}] New password")
+  		mail(:to => members_admin_user.email, :from => from, :subject => "[#{members_config_website_name}] New password")
   	end
   
-  	def new_user_information from, casein_admin_user, host, pass
-      @name = casein_admin_user.name
+  	def new_user_information from, members_admin_user, host, pass
+      @name = members_admin_user.name
   		@host = host
-  		@login = casein_admin_user.login
+  		@login = members_admin_user.login
   		@pass = pass
-  		@from_text = casein_config_website_name
+  		@from_text = members_config_website_name
   		
-  		mail(:to => casein_admin_user.email, :from => from, :subject => "[#{casein_config_website_name}] New user account")
+  		mail(:to => members_admin_user.email, :from => from, :subject => "[#{members_config_website_name}] New user account")
   	end
   	
-  	def password_reset_instructions from, casein_admin_user, host
+  	def password_reset_instructions from, members_admin_user, host
   	  ActionMailer::Base.default_url_options[:host] = host.gsub("http://", "")
-      @name = casein_admin_user.name
+      @name = members_admin_user.name
       @host = host
-      @login = casein_admin_user.login
-      @reset_password_url = edit_casein_password_reset_url + "/?token=#{casein_admin_user.perishable_token}"
-      @from_text = casein_config_website_name
+      @login = members_admin_user.login
+      @reset_password_url = edit_members_password_reset_url + "/?token=#{members_admin_user.perishable_token}"
+      @from_text = members_config_website_name
 
-      mail(:to => casein_admin_user.email, :from => from, :subject => "[#{casein_config_website_name}] Password reset instructions")
+      mail(:to => members_admin_user.email, :from => from, :subject => "[#{members_config_website_name}] Password reset instructions")
     end
 
   end

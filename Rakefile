@@ -6,10 +6,10 @@ end
 
 require 'rdoc/task'
 
-desc 'Generate documentation for the Casein gem.'
+desc 'Generate documentation for the Members gem.'
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Casein'
+  rdoc.title    = 'Members'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
